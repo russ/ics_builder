@@ -1,0 +1,30 @@
+= ICS Builder
+
+== Requirements
+
+ICS Builder requires Rails v2.1.
+
+It also requires the icalendar gem.
+
+  $ sudo gem install icalendar
+
+== Example
+
+Add events to your calendar file in the template.
+
+  @events.each do |event|
+    calendar.event do
+      dtstart(event.start_time)
+      dtend(event.end_time)
+      summary(event.title)
+      description(event.description)
+    end
+  end
+
+You can set the default filename for that a browser will use for 'save as' by
+setting <tt>@filename</tt> instance variable in your controller's action method
+e.g.
+
+  @filename = 'events.ics'
+
+Copyright (c) 2008 Russ Smith, released under the MIT license
